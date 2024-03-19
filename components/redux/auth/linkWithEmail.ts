@@ -48,7 +48,7 @@ export const linkWithEmail = createAsyncThunk(
                 
             
         } catch (e: any) {
-            console.log(e)
+            console.error(e)
             dispatch(
                 showToast({
                     message: getFriendlyMessageFromFirebaseErrorCode(e.code),

@@ -14,7 +14,7 @@ export const fetchHomePageData = createAsyncThunk('fetchHomePageData', async (_,
         // const data = await response;
         console.log(response);
     } catch (e: any) {
-        console.log('error', e);
+        console.error('error', e);
         dispatch(
             showToast({
                 message: 'Error fetching data',

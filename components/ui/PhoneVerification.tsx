@@ -36,7 +36,6 @@ const PhoneVerification = () => {
 
     // Sending OTP and storing id to verify it later
     const handleSendVerification = async () => {
-        console.log(auth.type);
         if (auth.type !== LoadingStateTypes.LOADED) return;
 
         dispatch(
