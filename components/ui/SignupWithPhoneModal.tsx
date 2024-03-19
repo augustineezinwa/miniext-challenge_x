@@ -57,7 +57,6 @@ const SignUpWithPhoneModal = (props: SignUpModalProps) => {
                     OTPCode,
                     confirmationResult: (window as any).verification,
                     callback: (result) => {
-                        console.log(result);
                         if (result.type === 'error') {
                             dispatch(
                                 showToast({
