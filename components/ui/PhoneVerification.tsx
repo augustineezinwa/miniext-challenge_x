@@ -36,6 +36,7 @@ const PhoneVerification = () => {
 
     // Sending OTP and storing id to verify it later
     const handleSendVerification = async () => {
+        console.log(auth.type);
         if (auth.type !== LoadingStateTypes.LOADED) return;
 
         dispatch(
@@ -101,7 +102,7 @@ const PhoneVerification = () => {
 
     return (
         <div className="flex items-center justify-center min-h-full px-4 py-12 sm:px-6 lg:px-8">
-            <div className="w-full max-w-md space-y-8">
+            <div className="w-full max-w-md space-y-8 ">
                 <div>
                     <img
                         className="w-auto h-12 mx-auto"

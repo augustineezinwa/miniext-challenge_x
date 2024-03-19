@@ -9,19 +9,19 @@ import { /* connectStorageEmulator, */ getStorage } from 'firebase/storage';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: 'FILL_ME_IN',
-    authDomain: 'FILL_ME_IN',
-    projectId: 'FILL_ME_IN',
-    storageBucket: 'FILL_ME_IN',
-    messagingSenderId: 'FILL_ME_IN',
-    appId: 'FILL_ME_IN',
-};
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+    authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+    projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID
+  };
 
 // Initialize Firebase
 export const firebaseApp = initializeApp(firebaseConfig);
 
 export const firestore = getFirestore(firebaseApp);
-export const baseBucketName = 'FILL_ME_IN';
+export const baseBucketName = process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET;
 
 /* if (isDev) {
     connectFirestoreEmulator(firestore, '127.0.0.1', 8081);

@@ -8,6 +8,7 @@ import PhoneVerification from '@/components/ui/PhoneVerification';
 import { useHomePage } from '@/components/redux/homePage/homePageSelectors';
 import { fetchHomePageData } from '@/components/redux/homePage/fetchHomePageData';
 import { useAppDispatch } from '@/components/redux/store';
+import AddEmailModal from '@/components/ui/AddEmailModal';
 
 export function Home() {
     const dispatch = useAppDispatch();
@@ -18,6 +19,10 @@ export function Home() {
     useEffect(() => {
         dispatch(fetchHomePageData());
     }, []);
+    const hasNoPhoneNumber = auth.type === LoadingStateTypes.LOADED && auth.user != null && auth.user.phoneNumber == null;
+    const hasNoEmail = auth.type === LoadingStateTypes.LOADED && auth.user != null && auth.user.email == null;
+
+
 
     return (
         <div className={styles.container}>
@@ -26,11 +31,9 @@ export function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            {auth.type === LoadingStateTypes.LOADED &&
-            auth.user != null &&
-            auth.user.phoneNumber == null ? (
+            {hasNoPhoneNumber ? (
                 <PhoneVerification />
-            ) : (
+            ) : hasNoEmail ? <AddEmailModal  />: (
                 <main className={styles.main}>
                     <h1 className={styles.title}>
                         Welcome to <a href="https://nextjs.org">Next.js!</a>

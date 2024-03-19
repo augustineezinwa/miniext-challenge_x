@@ -57,7 +57,7 @@ const LoginPage: NextPage = () => {
 
     return (
         <div className="flex items-center justify-center min-h-full px-4 py-12 sm:px-6 lg:px-8">
-            <div className="w-full max-w-md space-y-8">
+            {!showRegistration && <div className="w-full max-w-md space-y-8">
                 <div>
                     <img
                         className="w-auto h-12 mx-auto"
@@ -121,9 +121,10 @@ const LoginPage: NextPage = () => {
                             </div>
                         </div>
                     </div>
-                    <SignUpModal open={showRegistration} setOpen={setshowRegistration} />
+                   
                 </div>
-            </div>
+            </div>}
+            <SignUpModal open={showRegistration} setOpen={setshowRegistration} />
             <ToastBox />
         </div>
     );
