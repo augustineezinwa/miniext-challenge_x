@@ -7,3 +7,9 @@ https://www.loom.com/share/1167ce5c38f54f9590ef31a7426c25e2
 
 - Install Firebase CLI https://firebase.google.com/docs/cli
 - Download JDK https://www.oracle.com/java/technologies/downloads/#java21
+
+## Setup
+- clone repository to machine
+- Run `yarn run setup`
+- Add your firebase project env vars to the newly created env.local
+- Run `yarn dev`

@@ -6,10 +6,12 @@ import LoginWithGoogleButton from './LoginWithGoogleButton';
 import Input from './Input';
 import { isEmail } from 'validator';
 import { loginWithEmail, useIsLoginWithEmailLoading } from '../redux/auth/loginWithEmail';
+import SignUpWithPhoneModal from './SignupWithPhoneModal';
 
 interface SignUpModalProps {
     open: boolean;
     setOpen: (show: boolean) => void;
+    hasPhoneNumber?: boolean;
 }
 const SignUpModal = (props: SignUpModalProps) => {
     const dispatch = useAppDispatch();
@@ -17,6 +19,7 @@ const SignUpModal = (props: SignUpModalProps) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [disableSubmit, setDisableSubmit] = useState(true);
+    const [loginWithPhoneVisible, setLoginWithPhoneVisible] = useState(false);
     const isLoading = useIsLoginWithEmailLoading();
 
     useEffect(() => {
@@ -38,6 +41,8 @@ const SignUpModal = (props: SignUpModalProps) => {
             })
         );
 
+    
+
         /* if (credentials.user.emailVerified === false) {
                 await sendEmailVerification(credentials.user);
 
@@ -53,6 +58,7 @@ const SignUpModal = (props: SignUpModalProps) => {
     }, [email, password, dispatch]);
 
     return (
+
         <Modal show={props.open} setShow={props.setOpen}>
             <div className="max-w-md w-full bg-white py-6 rounded-lg">
                 <h2 className="text-lg font-semibold text-center mb-10">Sign Up</h2>
@@ -78,6 +84,7 @@ const SignUpModal = (props: SignUpModalProps) => {
                     >
                         Sign Up
                     </LoadingButton>
+                    <div className='space-y-4'>
                     <div className="relative">
                         <div className="absolute inset-0 flex items-center">
                             <div className="w-full border-t border-gray-300" />
@@ -89,9 +96,31 @@ const SignUpModal = (props: SignUpModalProps) => {
                     <div className="mt-2 grid grid-cols-1 gap-3">
                         <LoginWithGoogleButton />
                     </div>
+
+                    <div className="relative">
+                        <div className="absolute inset-0 flex items-center">
+                            <div className="w-full border-t border-gray-300" />
+                        </div>
+                        <div className="relative flex justify-center text-sm">
+                            <span className="bg-white px-2 text-gray-500">Or</span>
+                        </div>
+                    </div>
+
+                    <div className="mt-2 grid grid-cols-1 gap-3">
+                    <button onClick={() => setLoginWithPhoneVisible(true)} className="border rounded-lg px-4 py-2 focus-visible:outline-violet-500 text-gray-500">Phone Number</button>
+                     
+                    </div>
+
+                    </div>
+
                 </div>
             </div>
+
+            <SignUpWithPhoneModal open={loginWithPhoneVisible} setOpen={setLoginWithPhoneVisible}/>
+            
+            
         </Modal>
+  
     );
 };
 

@@ -22,7 +22,7 @@ export const loginWithEmail = createAsyncThunk(
             if (args.password.length < 6) {
                 dispatch(
                     showToast({
-                        message: 'Password should be atleast 6 characters',
+                        message: 'Password should be at least 6 characters',
                         type: 'info',
                     })
                 );
